@@ -6,7 +6,8 @@ option go_package = "github.com/fleeper2133/proto-chat/auth/v1;authpb";
 
 service AuthService {
     rpc Register (RegisterRequest) returns (RegisterResponse);
-    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Login (LoginRequest) returns (LoginResponse); 
+    rpc ValidateToken (TokenRequest) returns (TokenResponse);
 }
 
 message RegisterRequest {
@@ -25,4 +26,13 @@ message LoginRequest {
 
 message LoginResponse {
     string token = 1;
+}
+
+message TokenRequest {
+    string token = 1;
+}
+
+message TokenResponse {
+    int64 user_id = 1;
+    string username = 2;
 }
