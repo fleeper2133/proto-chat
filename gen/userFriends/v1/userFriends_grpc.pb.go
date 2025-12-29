@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.0
 // - protoc             (unknown)
-// source: auth/v1/userFriends.proto
+// source: userFriends/v1/userFriends.proto
 
 package userfriendspb
 
@@ -352,5 +352,5 @@ var UserFriendService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "auth/v1/userFriends.proto",
+	Metadata: "userFriends/v1/userFriends.proto",
 }

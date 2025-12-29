@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        (unknown)
-// source: auth/v1/userFriends.proto
+// source: userFriends/v1/userFriends.proto
 
 package userfriendspb
 
@@ -32,7 +32,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[0]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[0]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{0}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *User) GetUserId() int64 {
@@ -83,7 +83,7 @@ type ListFriendsResponse struct {
 
 func (x *ListFriendsResponse) Reset() {
 	*x = ListFriendsResponse{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[1]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -95,7 +95,7 @@ func (x *ListFriendsResponse) String() string {
 func (*ListFriendsResponse) ProtoMessage() {}
 
 func (x *ListFriendsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[1]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,7 +108,7 @@ func (x *ListFriendsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFriendsResponse.ProtoReflect.Descriptor instead.
 func (*ListFriendsResponse) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{1}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListFriendsResponse) GetFriends() []*Friend {
@@ -128,7 +128,7 @@ type Friend struct {
 
 func (x *Friend) Reset() {
 	*x = Friend{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[2]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -140,7 +140,7 @@ func (x *Friend) String() string {
 func (*Friend) ProtoMessage() {}
 
 func (x *Friend) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[2]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +153,7 @@ func (x *Friend) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Friend.ProtoReflect.Descriptor instead.
 func (*Friend) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{2}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Friend) GetUserId() int64 {
@@ -179,7 +179,7 @@ type SendFriendRequestRequest struct {
 
 func (x *SendFriendRequestRequest) Reset() {
 	*x = SendFriendRequestRequest{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[3]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -191,7 +191,7 @@ func (x *SendFriendRequestRequest) String() string {
 func (*SendFriendRequestRequest) ProtoMessage() {}
 
 func (x *SendFriendRequestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[3]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -204,7 +204,7 @@ func (x *SendFriendRequestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendFriendRequestRequest.ProtoReflect.Descriptor instead.
 func (*SendFriendRequestRequest) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{3}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SendFriendRequestRequest) GetTargetUserId() int64 {
@@ -223,7 +223,7 @@ type FriendRequestActionRequest struct {
 
 func (x *FriendRequestActionRequest) Reset() {
 	*x = FriendRequestActionRequest{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[4]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -235,7 +235,7 @@ func (x *FriendRequestActionRequest) String() string {
 func (*FriendRequestActionRequest) ProtoMessage() {}
 
 func (x *FriendRequestActionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[4]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -248,7 +248,7 @@ func (x *FriendRequestActionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FriendRequestActionRequest.ProtoReflect.Descriptor instead.
 func (*FriendRequestActionRequest) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{4}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *FriendRequestActionRequest) GetRequestId() int64 {
@@ -267,7 +267,7 @@ type ListRequestsResponse struct {
 
 func (x *ListRequestsResponse) Reset() {
 	*x = ListRequestsResponse{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[5]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -279,7 +279,7 @@ func (x *ListRequestsResponse) String() string {
 func (*ListRequestsResponse) ProtoMessage() {}
 
 func (x *ListRequestsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[5]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -292,7 +292,7 @@ func (x *ListRequestsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRequestsResponse.ProtoReflect.Descriptor instead.
 func (*ListRequestsResponse) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{5}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListRequestsResponse) GetRequests() []*FriendRequest {
@@ -313,7 +313,7 @@ type FriendRequest struct {
 
 func (x *FriendRequest) Reset() {
 	*x = FriendRequest{}
-	mi := &file_auth_v1_userFriends_proto_msgTypes[6]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -325,7 +325,7 @@ func (x *FriendRequest) String() string {
 func (*FriendRequest) ProtoMessage() {}
 
 func (x *FriendRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_userFriends_proto_msgTypes[6]
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -338,7 +338,7 @@ func (x *FriendRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FriendRequest.ProtoReflect.Descriptor instead.
 func (*FriendRequest) Descriptor() ([]byte, []int) {
-	return file_auth_v1_userFriends_proto_rawDescGZIP(), []int{6}
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *FriendRequest) GetRequestId() int64 {
@@ -362,11 +362,11 @@ func (x *FriendRequest) GetFromUsername() string {
 	return ""
 }
 
-var File_auth_v1_userFriends_proto protoreflect.FileDescriptor
+var File_userFriends_v1_userFriends_proto protoreflect.FileDescriptor
 
-const file_auth_v1_userFriends_proto_rawDesc = "" +
+const file_userFriends_v1_userFriends_proto_rawDesc = "" +
 	"\n" +
-	"\x19auth/v1/userFriends.proto\x12\x0euserfriends.v1\x1a\x1bgoogle/protobuf/empty.proto\";\n" +
+	" userFriends/v1/userFriends.proto\x12\x0euserfriends.v1\x1a\x1bgoogle/protobuf/empty.proto\";\n" +
 	"\x04User\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\"G\n" +
@@ -398,19 +398,19 @@ const file_auth_v1_userFriends_proto_rawDesc = "" +
 	"\x14ListOutgoingRequests\x12\x16.google.protobuf.Empty\x1a$.userfriends.v1.ListRequestsResponseB@Z>github.com/fleeper2133/proto-chat/userfriends/v1;userfriendspbb\x06proto3"
 
 var (
-	file_auth_v1_userFriends_proto_rawDescOnce sync.Once
-	file_auth_v1_userFriends_proto_rawDescData []byte
+	file_userFriends_v1_userFriends_proto_rawDescOnce sync.Once
+	file_userFriends_v1_userFriends_proto_rawDescData []byte
 )
 
-func file_auth_v1_userFriends_proto_rawDescGZIP() []byte {
-	file_auth_v1_userFriends_proto_rawDescOnce.Do(func() {
-		file_auth_v1_userFriends_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_auth_v1_userFriends_proto_rawDesc), len(file_auth_v1_userFriends_proto_rawDesc)))
+func file_userFriends_v1_userFriends_proto_rawDescGZIP() []byte {
+	file_userFriends_v1_userFriends_proto_rawDescOnce.Do(func() {
+		file_userFriends_v1_userFriends_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_userFriends_v1_userFriends_proto_rawDesc), len(file_userFriends_v1_userFriends_proto_rawDesc)))
 	})
-	return file_auth_v1_userFriends_proto_rawDescData
+	return file_userFriends_v1_userFriends_proto_rawDescData
 }
 
-var file_auth_v1_userFriends_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
-var file_auth_v1_userFriends_proto_goTypes = []any{
+var file_userFriends_v1_userFriends_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_userFriends_v1_userFriends_proto_goTypes = []any{
 	(*User)(nil),                       // 0: userfriends.v1.User
 	(*ListFriendsResponse)(nil),        // 1: userfriends.v1.ListFriendsResponse
 	(*Friend)(nil),                     // 2: userfriends.v1.Friend
@@ -420,7 +420,7 @@ var file_auth_v1_userFriends_proto_goTypes = []any{
 	(*FriendRequest)(nil),              // 6: userfriends.v1.FriendRequest
 	(*emptypb.Empty)(nil),              // 7: google.protobuf.Empty
 }
-var file_auth_v1_userFriends_proto_depIdxs = []int32{
+var file_userFriends_v1_userFriends_proto_depIdxs = []int32{
 	2, // 0: userfriends.v1.ListFriendsResponse.friends:type_name -> userfriends.v1.Friend
 	6, // 1: userfriends.v1.ListRequestsResponse.requests:type_name -> userfriends.v1.FriendRequest
 	7, // 2: userfriends.v1.UserFriendService.Me:input_type -> google.protobuf.Empty
@@ -444,26 +444,26 @@ var file_auth_v1_userFriends_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_auth_v1_userFriends_proto_init() }
-func file_auth_v1_userFriends_proto_init() {
-	if File_auth_v1_userFriends_proto != nil {
+func init() { file_userFriends_v1_userFriends_proto_init() }
+func file_userFriends_v1_userFriends_proto_init() {
+	if File_userFriends_v1_userFriends_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_userFriends_proto_rawDesc), len(file_auth_v1_userFriends_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_userFriends_v1_userFriends_proto_rawDesc), len(file_userFriends_v1_userFriends_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_auth_v1_userFriends_proto_goTypes,
-		DependencyIndexes: file_auth_v1_userFriends_proto_depIdxs,
-		MessageInfos:      file_auth_v1_userFriends_proto_msgTypes,
+		GoTypes:           file_userFriends_v1_userFriends_proto_goTypes,
+		DependencyIndexes: file_userFriends_v1_userFriends_proto_depIdxs,
+		MessageInfos:      file_userFriends_v1_userFriends_proto_msgTypes,
 	}.Build()
-	File_auth_v1_userFriends_proto = out.File
-	file_auth_v1_userFriends_proto_goTypes = nil
-	file_auth_v1_userFriends_proto_depIdxs = nil
+	File_userFriends_v1_userFriends_proto = out.File
+	file_userFriends_v1_userFriends_proto_goTypes = nil
+	file_userFriends_v1_userFriends_proto_depIdxs = nil
 }
