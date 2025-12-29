@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package userfriends.v1;
+
+option go_package = "github.com/fleeper2133/proto-chat/userfriends/v1;userfriendspb";
+
+import "google/protobuf/empty.proto";
+
+service UserFriendService {
+
+  // Текущий пользователь
+  rpc Me (google.protobuf.Empty)
+      returns (User);
+
+  // Друзья
+  rpc ListFriends (google.protobuf.Empty)
+      returns (ListFriendsResponse);
+
+  // Заявки
+  rpc SendFriendRequest (SendFriendRequestRequest)
+      returns (google.protobuf.Empty);
+
+  rpc AcceptFriendRequest (FriendRequestActionRequest)
+      returns (google.protobuf.Empty);
+
+  rpc RejectFriendRequest (FriendRequestActionRequest)
+      returns (google.protobuf.Empty);
+
+  rpc ListIncomingRequests (google.protobuf.Empty)
+      returns (ListRequestsResponse);
+
+  rpc ListOutgoingRequests (google.protobuf.Empty)
+      returns (ListRequestsResponse);
+}
+
+message User {
+  int64 user_id = 1;
+  string username = 2;
+}
+
+message ListFriendsResponse {
+  repeated Friend friends = 1;
+}
+
+message Friend {
+  int64 user_id = 1;
+  string username = 2;
+}
+
+
+message SendFriendRequestRequest {
+  int64 target_user_id = 1;
+}
+
+message FriendRequestActionRequest {
+  int64 request_id = 1;
+}
+
+message ListRequestsResponse {
+  repeated FriendRequest requests = 1;
+}
+
+message FriendRequest {
+  int64 request_id = 1;
+  int64 from_user_id = 2;
+  string from_username = 3;
+}
