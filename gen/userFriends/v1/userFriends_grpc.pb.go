@@ -41,8 +41,8 @@ type UserFriendServiceClient interface {
 	SendFriendRequest(ctx context.Context, in *SendFriendRequestRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	AcceptFriendRequest(ctx context.Context, in *FriendRequestActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	RejectFriendRequest(ctx context.Context, in *FriendRequestActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ListIncomingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListRequestsResponse, error)
-	ListOutgoingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListRequestsResponse, error)
+	ListIncomingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListIncomingRequestsResponse, error)
+	ListOutgoingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListOutgoingRequestsResponse, error)
 }
 
 type userFriendServiceClient struct {
@@ -103,9 +103,9 @@ func (c *userFriendServiceClient) RejectFriendRequest(ctx context.Context, in *F
 	return out, nil
 }
 
-func (c *userFriendServiceClient) ListIncomingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListRequestsResponse, error) {
+func (c *userFriendServiceClient) ListIncomingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListIncomingRequestsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRequestsResponse)
+	out := new(ListIncomingRequestsResponse)
 	err := c.cc.Invoke(ctx, UserFriendService_ListIncomingRequests_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -113,9 +113,9 @@ func (c *userFriendServiceClient) ListIncomingRequests(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *userFriendServiceClient) ListOutgoingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListRequestsResponse, error) {
+func (c *userFriendServiceClient) ListOutgoingRequests(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListOutgoingRequestsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRequestsResponse)
+	out := new(ListOutgoingRequestsResponse)
 	err := c.cc.Invoke(ctx, UserFriendService_ListOutgoingRequests_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -135,8 +135,8 @@ type UserFriendServiceServer interface {
 	SendFriendRequest(context.Context, *SendFriendRequestRequest) (*emptypb.Empty, error)
 	AcceptFriendRequest(context.Context, *FriendRequestActionRequest) (*emptypb.Empty, error)
 	RejectFriendRequest(context.Context, *FriendRequestActionRequest) (*emptypb.Empty, error)
-	ListIncomingRequests(context.Context, *emptypb.Empty) (*ListRequestsResponse, error)
-	ListOutgoingRequests(context.Context, *emptypb.Empty) (*ListRequestsResponse, error)
+	ListIncomingRequests(context.Context, *emptypb.Empty) (*ListIncomingRequestsResponse, error)
+	ListOutgoingRequests(context.Context, *emptypb.Empty) (*ListOutgoingRequestsResponse, error)
 	mustEmbedUnimplementedUserFriendServiceServer()
 }
 
@@ -162,10 +162,10 @@ func (UnimplementedUserFriendServiceServer) AcceptFriendRequest(context.Context,
 func (UnimplementedUserFriendServiceServer) RejectFriendRequest(context.Context, *FriendRequestActionRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method RejectFriendRequest not implemented")
 }
-func (UnimplementedUserFriendServiceServer) ListIncomingRequests(context.Context, *emptypb.Empty) (*ListRequestsResponse, error) {
+func (UnimplementedUserFriendServiceServer) ListIncomingRequests(context.Context, *emptypb.Empty) (*ListIncomingRequestsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListIncomingRequests not implemented")
 }
-func (UnimplementedUserFriendServiceServer) ListOutgoingRequests(context.Context, *emptypb.Empty) (*ListRequestsResponse, error) {
+func (UnimplementedUserFriendServiceServer) ListOutgoingRequests(context.Context, *emptypb.Empty) (*ListOutgoingRequestsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListOutgoingRequests not implemented")
 }
 func (UnimplementedUserFriendServiceServer) mustEmbedUnimplementedUserFriendServiceServer() {}

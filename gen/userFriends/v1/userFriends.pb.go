@@ -258,27 +258,27 @@ func (x *FriendRequestActionRequest) GetRequestId() int64 {
 	return 0
 }
 
-type ListRequestsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Requests      []*FriendRequest       `protobuf:"bytes,1,rep,name=requests,proto3" json:"requests,omitempty"`
+type ListIncomingRequestsResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Requests      []*IncomingFriendRequest `protobuf:"bytes,1,rep,name=requests,proto3" json:"requests,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListRequestsResponse) Reset() {
-	*x = ListRequestsResponse{}
+func (x *ListIncomingRequestsResponse) Reset() {
+	*x = ListIncomingRequestsResponse{}
 	mi := &file_userFriends_v1_userFriends_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListRequestsResponse) String() string {
+func (x *ListIncomingRequestsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListRequestsResponse) ProtoMessage() {}
+func (*ListIncomingRequestsResponse) ProtoMessage() {}
 
-func (x *ListRequestsResponse) ProtoReflect() protoreflect.Message {
+func (x *ListIncomingRequestsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_userFriends_v1_userFriends_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -290,19 +290,63 @@ func (x *ListRequestsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListRequestsResponse.ProtoReflect.Descriptor instead.
-func (*ListRequestsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListIncomingRequestsResponse.ProtoReflect.Descriptor instead.
+func (*ListIncomingRequestsResponse) Descriptor() ([]byte, []int) {
 	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ListRequestsResponse) GetRequests() []*FriendRequest {
+func (x *ListIncomingRequestsResponse) GetRequests() []*IncomingFriendRequest {
 	if x != nil {
 		return x.Requests
 	}
 	return nil
 }
 
-type FriendRequest struct {
+type ListOutgoingRequestsResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Requests      []*OutgoingFriendRequest `protobuf:"bytes,1,rep,name=requests,proto3" json:"requests,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListOutgoingRequestsResponse) Reset() {
+	*x = ListOutgoingRequestsResponse{}
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOutgoingRequestsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOutgoingRequestsResponse) ProtoMessage() {}
+
+func (x *ListOutgoingRequestsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOutgoingRequestsResponse.ProtoReflect.Descriptor instead.
+func (*ListOutgoingRequestsResponse) Descriptor() ([]byte, []int) {
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListOutgoingRequestsResponse) GetRequests() []*OutgoingFriendRequest {
+	if x != nil {
+		return x.Requests
+	}
+	return nil
+}
+
+type IncomingFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RequestId     int64                  `protobuf:"varint,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	FromUserId    int64                  `protobuf:"varint,2,opt,name=from_user_id,json=fromUserId,proto3" json:"from_user_id,omitempty"`
@@ -311,21 +355,21 @@ type FriendRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *FriendRequest) Reset() {
-	*x = FriendRequest{}
-	mi := &file_userFriends_v1_userFriends_proto_msgTypes[6]
+func (x *IncomingFriendRequest) Reset() {
+	*x = IncomingFriendRequest{}
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *FriendRequest) String() string {
+func (x *IncomingFriendRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*FriendRequest) ProtoMessage() {}
+func (*IncomingFriendRequest) ProtoMessage() {}
 
-func (x *FriendRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userFriends_v1_userFriends_proto_msgTypes[6]
+func (x *IncomingFriendRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -336,28 +380,88 @@ func (x *FriendRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use FriendRequest.ProtoReflect.Descriptor instead.
-func (*FriendRequest) Descriptor() ([]byte, []int) {
-	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use IncomingFriendRequest.ProtoReflect.Descriptor instead.
+func (*IncomingFriendRequest) Descriptor() ([]byte, []int) {
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *FriendRequest) GetRequestId() int64 {
+func (x *IncomingFriendRequest) GetRequestId() int64 {
 	if x != nil {
 		return x.RequestId
 	}
 	return 0
 }
 
-func (x *FriendRequest) GetFromUserId() int64 {
+func (x *IncomingFriendRequest) GetFromUserId() int64 {
 	if x != nil {
 		return x.FromUserId
 	}
 	return 0
 }
 
-func (x *FriendRequest) GetFromUsername() string {
+func (x *IncomingFriendRequest) GetFromUsername() string {
 	if x != nil {
 		return x.FromUsername
+	}
+	return ""
+}
+
+type OutgoingFriendRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RequestId     int64                  `protobuf:"varint,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	ToUserId      int64                  `protobuf:"varint,2,opt,name=to_user_id,json=toUserId,proto3" json:"to_user_id,omitempty"`
+	ToUsername    string                 `protobuf:"bytes,3,opt,name=to_username,json=toUsername,proto3" json:"to_username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OutgoingFriendRequest) Reset() {
+	*x = OutgoingFriendRequest{}
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OutgoingFriendRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OutgoingFriendRequest) ProtoMessage() {}
+
+func (x *OutgoingFriendRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_userFriends_v1_userFriends_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OutgoingFriendRequest.ProtoReflect.Descriptor instead.
+func (*OutgoingFriendRequest) Descriptor() ([]byte, []int) {
+	return file_userFriends_v1_userFriends_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *OutgoingFriendRequest) GetRequestId() int64 {
+	if x != nil {
+		return x.RequestId
+	}
+	return 0
+}
+
+func (x *OutgoingFriendRequest) GetToUserId() int64 {
+	if x != nil {
+		return x.ToUserId
+	}
+	return 0
+}
+
+func (x *OutgoingFriendRequest) GetToUsername() string {
+	if x != nil {
+		return x.ToUsername
 	}
 	return ""
 }
@@ -379,23 +483,32 @@ const file_userFriends_v1_userFriends_proto_rawDesc = "" +
 	"\x0etarget_user_id\x18\x01 \x01(\x03R\ftargetUserId\";\n" +
 	"\x1aFriendRequestActionRequest\x12\x1d\n" +
 	"\n" +
-	"request_id\x18\x01 \x01(\x03R\trequestId\"Q\n" +
-	"\x14ListRequestsResponse\x129\n" +
-	"\brequests\x18\x01 \x03(\v2\x1d.userfriends.v1.FriendRequestR\brequests\"u\n" +
-	"\rFriendRequest\x12\x1d\n" +
+	"request_id\x18\x01 \x01(\x03R\trequestId\"a\n" +
+	"\x1cListIncomingRequestsResponse\x12A\n" +
+	"\brequests\x18\x01 \x03(\v2%.userfriends.v1.IncomingFriendRequestR\brequests\"a\n" +
+	"\x1cListOutgoingRequestsResponse\x12A\n" +
+	"\brequests\x18\x01 \x03(\v2%.userfriends.v1.OutgoingFriendRequestR\brequests\"}\n" +
+	"\x15IncomingFriendRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\x03R\trequestId\x12 \n" +
 	"\ffrom_user_id\x18\x02 \x01(\x03R\n" +
 	"fromUserId\x12#\n" +
-	"\rfrom_username\x18\x03 \x01(\tR\ffromUsername2\xcc\x04\n" +
+	"\rfrom_username\x18\x03 \x01(\tR\ffromUsername\"u\n" +
+	"\x15OutgoingFriendRequest\x12\x1d\n" +
+	"\n" +
+	"request_id\x18\x01 \x01(\x03R\trequestId\x12\x1c\n" +
+	"\n" +
+	"to_user_id\x18\x02 \x01(\x03R\btoUserId\x12\x1f\n" +
+	"\vto_username\x18\x03 \x01(\tR\n" +
+	"toUsername2\xdc\x04\n" +
 	"\x11UserFriendService\x122\n" +
 	"\x02Me\x12\x16.google.protobuf.Empty\x1a\x14.userfriends.v1.User\x12J\n" +
 	"\vListFriends\x12\x16.google.protobuf.Empty\x1a#.userfriends.v1.ListFriendsResponse\x12U\n" +
 	"\x11SendFriendRequest\x12(.userfriends.v1.SendFriendRequestRequest\x1a\x16.google.protobuf.Empty\x12Y\n" +
 	"\x13AcceptFriendRequest\x12*.userfriends.v1.FriendRequestActionRequest\x1a\x16.google.protobuf.Empty\x12Y\n" +
-	"\x13RejectFriendRequest\x12*.userfriends.v1.FriendRequestActionRequest\x1a\x16.google.protobuf.Empty\x12T\n" +
-	"\x14ListIncomingRequests\x12\x16.google.protobuf.Empty\x1a$.userfriends.v1.ListRequestsResponse\x12T\n" +
-	"\x14ListOutgoingRequests\x12\x16.google.protobuf.Empty\x1a$.userfriends.v1.ListRequestsResponseB@Z>github.com/fleeper2133/proto-chat/userfriends/v1;userfriendspbb\x06proto3"
+	"\x13RejectFriendRequest\x12*.userfriends.v1.FriendRequestActionRequest\x1a\x16.google.protobuf.Empty\x12\\\n" +
+	"\x14ListIncomingRequests\x12\x16.google.protobuf.Empty\x1a,.userfriends.v1.ListIncomingRequestsResponse\x12\\\n" +
+	"\x14ListOutgoingRequests\x12\x16.google.protobuf.Empty\x1a,.userfriends.v1.ListOutgoingRequestsResponseB@Z>github.com/fleeper2133/proto-chat/userfriends/v1;userfriendspbb\x06proto3"
 
 var (
 	file_userFriends_v1_userFriends_proto_rawDescOnce sync.Once
@@ -409,39 +522,42 @@ func file_userFriends_v1_userFriends_proto_rawDescGZIP() []byte {
 	return file_userFriends_v1_userFriends_proto_rawDescData
 }
 
-var file_userFriends_v1_userFriends_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_userFriends_v1_userFriends_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_userFriends_v1_userFriends_proto_goTypes = []any{
-	(*User)(nil),                       // 0: userfriends.v1.User
-	(*ListFriendsResponse)(nil),        // 1: userfriends.v1.ListFriendsResponse
-	(*Friend)(nil),                     // 2: userfriends.v1.Friend
-	(*SendFriendRequestRequest)(nil),   // 3: userfriends.v1.SendFriendRequestRequest
-	(*FriendRequestActionRequest)(nil), // 4: userfriends.v1.FriendRequestActionRequest
-	(*ListRequestsResponse)(nil),       // 5: userfriends.v1.ListRequestsResponse
-	(*FriendRequest)(nil),              // 6: userfriends.v1.FriendRequest
-	(*emptypb.Empty)(nil),              // 7: google.protobuf.Empty
+	(*User)(nil),                         // 0: userfriends.v1.User
+	(*ListFriendsResponse)(nil),          // 1: userfriends.v1.ListFriendsResponse
+	(*Friend)(nil),                       // 2: userfriends.v1.Friend
+	(*SendFriendRequestRequest)(nil),     // 3: userfriends.v1.SendFriendRequestRequest
+	(*FriendRequestActionRequest)(nil),   // 4: userfriends.v1.FriendRequestActionRequest
+	(*ListIncomingRequestsResponse)(nil), // 5: userfriends.v1.ListIncomingRequestsResponse
+	(*ListOutgoingRequestsResponse)(nil), // 6: userfriends.v1.ListOutgoingRequestsResponse
+	(*IncomingFriendRequest)(nil),        // 7: userfriends.v1.IncomingFriendRequest
+	(*OutgoingFriendRequest)(nil),        // 8: userfriends.v1.OutgoingFriendRequest
+	(*emptypb.Empty)(nil),                // 9: google.protobuf.Empty
 }
 var file_userFriends_v1_userFriends_proto_depIdxs = []int32{
-	2, // 0: userfriends.v1.ListFriendsResponse.friends:type_name -> userfriends.v1.Friend
-	6, // 1: userfriends.v1.ListRequestsResponse.requests:type_name -> userfriends.v1.FriendRequest
-	7, // 2: userfriends.v1.UserFriendService.Me:input_type -> google.protobuf.Empty
-	7, // 3: userfriends.v1.UserFriendService.ListFriends:input_type -> google.protobuf.Empty
-	3, // 4: userfriends.v1.UserFriendService.SendFriendRequest:input_type -> userfriends.v1.SendFriendRequestRequest
-	4, // 5: userfriends.v1.UserFriendService.AcceptFriendRequest:input_type -> userfriends.v1.FriendRequestActionRequest
-	4, // 6: userfriends.v1.UserFriendService.RejectFriendRequest:input_type -> userfriends.v1.FriendRequestActionRequest
-	7, // 7: userfriends.v1.UserFriendService.ListIncomingRequests:input_type -> google.protobuf.Empty
-	7, // 8: userfriends.v1.UserFriendService.ListOutgoingRequests:input_type -> google.protobuf.Empty
-	0, // 9: userfriends.v1.UserFriendService.Me:output_type -> userfriends.v1.User
-	1, // 10: userfriends.v1.UserFriendService.ListFriends:output_type -> userfriends.v1.ListFriendsResponse
-	7, // 11: userfriends.v1.UserFriendService.SendFriendRequest:output_type -> google.protobuf.Empty
-	7, // 12: userfriends.v1.UserFriendService.AcceptFriendRequest:output_type -> google.protobuf.Empty
-	7, // 13: userfriends.v1.UserFriendService.RejectFriendRequest:output_type -> google.protobuf.Empty
-	5, // 14: userfriends.v1.UserFriendService.ListIncomingRequests:output_type -> userfriends.v1.ListRequestsResponse
-	5, // 15: userfriends.v1.UserFriendService.ListOutgoingRequests:output_type -> userfriends.v1.ListRequestsResponse
-	9, // [9:16] is the sub-list for method output_type
-	2, // [2:9] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	2,  // 0: userfriends.v1.ListFriendsResponse.friends:type_name -> userfriends.v1.Friend
+	7,  // 1: userfriends.v1.ListIncomingRequestsResponse.requests:type_name -> userfriends.v1.IncomingFriendRequest
+	8,  // 2: userfriends.v1.ListOutgoingRequestsResponse.requests:type_name -> userfriends.v1.OutgoingFriendRequest
+	9,  // 3: userfriends.v1.UserFriendService.Me:input_type -> google.protobuf.Empty
+	9,  // 4: userfriends.v1.UserFriendService.ListFriends:input_type -> google.protobuf.Empty
+	3,  // 5: userfriends.v1.UserFriendService.SendFriendRequest:input_type -> userfriends.v1.SendFriendRequestRequest
+	4,  // 6: userfriends.v1.UserFriendService.AcceptFriendRequest:input_type -> userfriends.v1.FriendRequestActionRequest
+	4,  // 7: userfriends.v1.UserFriendService.RejectFriendRequest:input_type -> userfriends.v1.FriendRequestActionRequest
+	9,  // 8: userfriends.v1.UserFriendService.ListIncomingRequests:input_type -> google.protobuf.Empty
+	9,  // 9: userfriends.v1.UserFriendService.ListOutgoingRequests:input_type -> google.protobuf.Empty
+	0,  // 10: userfriends.v1.UserFriendService.Me:output_type -> userfriends.v1.User
+	1,  // 11: userfriends.v1.UserFriendService.ListFriends:output_type -> userfriends.v1.ListFriendsResponse
+	9,  // 12: userfriends.v1.UserFriendService.SendFriendRequest:output_type -> google.protobuf.Empty
+	9,  // 13: userfriends.v1.UserFriendService.AcceptFriendRequest:output_type -> google.protobuf.Empty
+	9,  // 14: userfriends.v1.UserFriendService.RejectFriendRequest:output_type -> google.protobuf.Empty
+	5,  // 15: userfriends.v1.UserFriendService.ListIncomingRequests:output_type -> userfriends.v1.ListIncomingRequestsResponse
+	6,  // 16: userfriends.v1.UserFriendService.ListOutgoingRequests:output_type -> userfriends.v1.ListOutgoingRequestsResponse
+	10, // [10:17] is the sub-list for method output_type
+	3,  // [3:10] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_userFriends_v1_userFriends_proto_init() }
@@ -455,7 +571,7 @@ func file_userFriends_v1_userFriends_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_userFriends_v1_userFriends_proto_rawDesc), len(file_userFriends_v1_userFriends_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
