@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package chat.v1;
+
+option go_package = "github.com/fleeper2133/proto-chat/chat/v1;chatpb";
+
+
+service ChatService {
+
+ // Получить список диалогов
+  rpc GetChats(GetChatsRequest) returns (GetChatsResponse);
+
+  // Получить историю сообщений
+  rpc GetMessages(GetMessagesRequest) returns (GetMessagesResponse);
+
+  // Отправить сообщение
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse);
+
+  // Realtime подписка (для WebSocket Gateway)
+  rpc Subscribe(SubscribeRequest) returns (stream IncomingMessage);
+}
+
+message User {
+  string id = 1;
+}
+
+message Chat {
+  string id = 1;
+  string user1_id = 2;
+  string user2_id = 3;
+  int64 created_at = 4;
+  Message last_message = 5;
+}
+
+message Message {
+  string id = 1;
+  string chat_id = 2;
+  string from_user_id = 3;
+  string to_user_id = 4;
+  string text = 5;
+  int64 created_at = 6;
+  bool read = 7;
+}
+
+message GetChatsRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+}
+
+message GetChatsResponse {
+  repeated Chat chats = 1;
+}
+
+
+message GetMessagesRequest {
+  string chat_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message GetMessagesResponse {
+  repeated Message messages = 1;
+}
+
+message SendMessageRequest {
+  string to_user_id = 1;
+  string text = 2;
+}
+
+message SendMessageResponse {
+  Message message = 1;
+}
+
+message SubscribeRequest {}
+
+message IncomingMessage {
+  Message message = 1;
+}
+
