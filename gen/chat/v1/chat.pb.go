@@ -9,6 +9,7 @@ package chatpb
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -104,7 +105,7 @@ type Message struct {
 	FromUserId    int64                  `protobuf:"varint,3,opt,name=from_user_id,json=fromUserId,proto3" json:"from_user_id,omitempty"`
 	ToUserId      int64                  `protobuf:"varint,4,opt,name=to_user_id,json=toUserId,proto3" json:"to_user_id,omitempty"`
 	Text          string                 `protobuf:"bytes,5,opt,name=text,proto3" json:"text,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	Read          bool                   `protobuf:"varint,7,opt,name=read,proto3" json:"read,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -175,11 +176,11 @@ func (x *Message) GetText() string {
 	return ""
 }
 
-func (x *Message) GetCreatedAt() int64 {
+func (x *Message) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
 	}
-	return 0
+	return nil
 }
 
 func (x *Message) GetRead() bool {
@@ -569,14 +570,14 @@ var File_chat_v1_chat_proto protoreflect.FileDescriptor
 
 const file_chat_v1_chat_proto_rawDesc = "" +
 	"\n" +
-	"\x12chat/v1/chat.proto\x12\achat.v1\"\xa0\x01\n" +
+	"\x12chat/v1/chat.proto\x12\achat.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x01\n" +
 	"\x04Chat\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\buser1_id\x18\x02 \x01(\x03R\auser1Id\x12\x19\n" +
 	"\buser2_id\x18\x03 \x01(\x03R\auser2Id\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\x03R\tcreatedAt\x123\n" +
-	"\flast_message\x18\x05 \x01(\v2\x10.chat.v1.MessageR\vlastMessage\"\xb9\x01\n" +
+	"\flast_message\x18\x05 \x01(\v2\x10.chat.v1.MessageR\vlastMessage\"\xd5\x01\n" +
 	"\aMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\achat_id\x18\x02 \x01(\x03R\x06chatId\x12 \n" +
@@ -584,9 +585,9 @@ const file_chat_v1_chat_proto_rawDesc = "" +
 	"fromUserId\x12\x1c\n" +
 	"\n" +
 	"to_user_id\x18\x04 \x01(\x03R\btoUserId\x12\x12\n" +
-	"\x04text\x18\x05 \x01(\tR\x04text\x12\x1d\n" +
+	"\x04text\x18\x05 \x01(\tR\x04text\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\x03R\tcreatedAt\x12\x12\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x12\n" +
 	"\x04read\x18\a \x01(\bR\x04read\"?\n" +
 	"\x0fGetChatsRequest\x12\x14\n" +
 	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
@@ -628,36 +629,38 @@ func file_chat_v1_chat_proto_rawDescGZIP() []byte {
 
 var file_chat_v1_chat_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_chat_v1_chat_proto_goTypes = []any{
-	(*Chat)(nil),                // 0: chat.v1.Chat
-	(*Message)(nil),             // 1: chat.v1.Message
-	(*GetChatsRequest)(nil),     // 2: chat.v1.GetChatsRequest
-	(*GetChatsResponse)(nil),    // 3: chat.v1.GetChatsResponse
-	(*GetMessagesRequest)(nil),  // 4: chat.v1.GetMessagesRequest
-	(*GetMessagesResponse)(nil), // 5: chat.v1.GetMessagesResponse
-	(*SendMessageRequest)(nil),  // 6: chat.v1.SendMessageRequest
-	(*SendMessageResponse)(nil), // 7: chat.v1.SendMessageResponse
-	(*SubscribeRequest)(nil),    // 8: chat.v1.SubscribeRequest
-	(*IncomingMessage)(nil),     // 9: chat.v1.IncomingMessage
+	(*Chat)(nil),                  // 0: chat.v1.Chat
+	(*Message)(nil),               // 1: chat.v1.Message
+	(*GetChatsRequest)(nil),       // 2: chat.v1.GetChatsRequest
+	(*GetChatsResponse)(nil),      // 3: chat.v1.GetChatsResponse
+	(*GetMessagesRequest)(nil),    // 4: chat.v1.GetMessagesRequest
+	(*GetMessagesResponse)(nil),   // 5: chat.v1.GetMessagesResponse
+	(*SendMessageRequest)(nil),    // 6: chat.v1.SendMessageRequest
+	(*SendMessageResponse)(nil),   // 7: chat.v1.SendMessageResponse
+	(*SubscribeRequest)(nil),      // 8: chat.v1.SubscribeRequest
+	(*IncomingMessage)(nil),       // 9: chat.v1.IncomingMessage
+	(*timestamppb.Timestamp)(nil), // 10: google.protobuf.Timestamp
 }
 var file_chat_v1_chat_proto_depIdxs = []int32{
-	1, // 0: chat.v1.Chat.last_message:type_name -> chat.v1.Message
-	0, // 1: chat.v1.GetChatsResponse.chats:type_name -> chat.v1.Chat
-	1, // 2: chat.v1.GetMessagesResponse.messages:type_name -> chat.v1.Message
-	1, // 3: chat.v1.SendMessageResponse.message:type_name -> chat.v1.Message
-	1, // 4: chat.v1.IncomingMessage.message:type_name -> chat.v1.Message
-	2, // 5: chat.v1.ChatService.GetChats:input_type -> chat.v1.GetChatsRequest
-	4, // 6: chat.v1.ChatService.GetMessages:input_type -> chat.v1.GetMessagesRequest
-	6, // 7: chat.v1.ChatService.SendMessage:input_type -> chat.v1.SendMessageRequest
-	8, // 8: chat.v1.ChatService.Subscribe:input_type -> chat.v1.SubscribeRequest
-	3, // 9: chat.v1.ChatService.GetChats:output_type -> chat.v1.GetChatsResponse
-	5, // 10: chat.v1.ChatService.GetMessages:output_type -> chat.v1.GetMessagesResponse
-	7, // 11: chat.v1.ChatService.SendMessage:output_type -> chat.v1.SendMessageResponse
-	9, // 12: chat.v1.ChatService.Subscribe:output_type -> chat.v1.IncomingMessage
-	9, // [9:13] is the sub-list for method output_type
-	5, // [5:9] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	1,  // 0: chat.v1.Chat.last_message:type_name -> chat.v1.Message
+	10, // 1: chat.v1.Message.created_at:type_name -> google.protobuf.Timestamp
+	0,  // 2: chat.v1.GetChatsResponse.chats:type_name -> chat.v1.Chat
+	1,  // 3: chat.v1.GetMessagesResponse.messages:type_name -> chat.v1.Message
+	1,  // 4: chat.v1.SendMessageResponse.message:type_name -> chat.v1.Message
+	1,  // 5: chat.v1.IncomingMessage.message:type_name -> chat.v1.Message
+	2,  // 6: chat.v1.ChatService.GetChats:input_type -> chat.v1.GetChatsRequest
+	4,  // 7: chat.v1.ChatService.GetMessages:input_type -> chat.v1.GetMessagesRequest
+	6,  // 8: chat.v1.ChatService.SendMessage:input_type -> chat.v1.SendMessageRequest
+	8,  // 9: chat.v1.ChatService.Subscribe:input_type -> chat.v1.SubscribeRequest
+	3,  // 10: chat.v1.ChatService.GetChats:output_type -> chat.v1.GetChatsResponse
+	5,  // 11: chat.v1.ChatService.GetMessages:output_type -> chat.v1.GetMessagesResponse
+	7,  // 12: chat.v1.ChatService.SendMessage:output_type -> chat.v1.SendMessageResponse
+	9,  // 13: chat.v1.ChatService.Subscribe:output_type -> chat.v1.IncomingMessage
+	10, // [10:14] is the sub-list for method output_type
+	6,  // [6:10] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_chat_v1_chat_proto_init() }
