@@ -22,6 +22,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	UserFriendService_Me_FullMethodName                   = "/userfriends.v1.UserFriendService/Me"
 	UserFriendService_ListFriends_FullMethodName          = "/userfriends.v1.UserFriendService/ListFriends"
+	UserFriendService_SearchUsers_FullMethodName          = "/userfriends.v1.UserFriendService/SearchUsers"
+	UserFriendService_SearchFriends_FullMethodName        = "/userfriends.v1.UserFriendService/SearchFriends"
 	UserFriendService_SendFriendRequest_FullMethodName    = "/userfriends.v1.UserFriendService/SendFriendRequest"
 	UserFriendService_AcceptFriendRequest_FullMethodName  = "/userfriends.v1.UserFriendService/AcceptFriendRequest"
 	UserFriendService_RejectFriendRequest_FullMethodName  = "/userfriends.v1.UserFriendService/RejectFriendRequest"
@@ -37,6 +39,8 @@ type UserFriendServiceClient interface {
 	Me(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*User, error)
 	// Друзья
 	ListFriends(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListFriendsResponse, error)
+	SearchUsers(ctx context.Context, in *SearchUsersRequest, opts ...grpc.CallOption) (*SearchUsersResponse, error)
+	SearchFriends(ctx context.Context, in *SearchUsersRequest, opts ...grpc.CallOption) (*SearchUsersResponse, error)
 	// Заявки
 	SendFriendRequest(ctx context.Context, in *SendFriendRequestRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	AcceptFriendRequest(ctx context.Context, in *FriendRequestActionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -67,6 +71,26 @@ func (c *userFriendServiceClient) ListFriends(ctx context.Context, in *emptypb.E
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListFriendsResponse)
 	err := c.cc.Invoke(ctx, UserFriendService_ListFriends_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userFriendServiceClient) SearchUsers(ctx context.Context, in *SearchUsersRequest, opts ...grpc.CallOption) (*SearchUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchUsersResponse)
+	err := c.cc.Invoke(ctx, UserFriendService_SearchUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userFriendServiceClient) SearchFriends(ctx context.Context, in *SearchUsersRequest, opts ...grpc.CallOption) (*SearchUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchUsersResponse)
+	err := c.cc.Invoke(ctx, UserFriendService_SearchFriends_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -131,6 +155,8 @@ type UserFriendServiceServer interface {
 	Me(context.Context, *emptypb.Empty) (*User, error)
 	// Друзья
 	ListFriends(context.Context, *emptypb.Empty) (*ListFriendsResponse, error)
+	SearchUsers(context.Context, *SearchUsersRequest) (*SearchUsersResponse, error)
+	SearchFriends(context.Context, *SearchUsersRequest) (*SearchUsersResponse, error)
 	// Заявки
 	SendFriendRequest(context.Context, *SendFriendRequestRequest) (*emptypb.Empty, error)
 	AcceptFriendRequest(context.Context, *FriendRequestActionRequest) (*emptypb.Empty, error)
@@ -152,6 +178,12 @@ func (UnimplementedUserFriendServiceServer) Me(context.Context, *emptypb.Empty) 
 }
 func (UnimplementedUserFriendServiceServer) ListFriends(context.Context, *emptypb.Empty) (*ListFriendsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListFriends not implemented")
+}
+func (UnimplementedUserFriendServiceServer) SearchUsers(context.Context, *SearchUsersRequest) (*SearchUsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SearchUsers not implemented")
+}
+func (UnimplementedUserFriendServiceServer) SearchFriends(context.Context, *SearchUsersRequest) (*SearchUsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SearchFriends not implemented")
 }
 func (UnimplementedUserFriendServiceServer) SendFriendRequest(context.Context, *SendFriendRequestRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendFriendRequest not implemented")
@@ -221,6 +253,42 @@ func _UserFriendService_ListFriends_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserFriendServiceServer).ListFriends(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserFriendService_SearchUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserFriendServiceServer).SearchUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserFriendService_SearchUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserFriendServiceServer).SearchUsers(ctx, req.(*SearchUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserFriendService_SearchFriends_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserFriendServiceServer).SearchFriends(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserFriendService_SearchFriends_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserFriendServiceServer).SearchFriends(ctx, req.(*SearchUsersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -329,6 +397,14 @@ var UserFriendService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListFriends",
 			Handler:    _UserFriendService_ListFriends_Handler,
+		},
+		{
+			MethodName: "SearchUsers",
+			Handler:    _UserFriendService_SearchUsers_Handler,
+		},
+		{
+			MethodName: "SearchFriends",
+			Handler:    _UserFriendService_SearchFriends_Handler,
 		},
 		{
 			MethodName: "SendFriendRequest",

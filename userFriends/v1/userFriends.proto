@@ -16,6 +16,12 @@ service UserFriendService {
   rpc ListFriends (google.protobuf.Empty)
       returns (ListFriendsResponse);
 
+  rpc SearchUsers (SearchUsersRequest)
+    returns (SearchUsersResponse);
+
+  rpc SearchFriends (SearchUsersRequest)
+    returns (SearchUsersResponse);
+
   // Заявки
   rpc SendFriendRequest (SendFriendRequestRequest)
       returns (google.protobuf.Empty);
@@ -47,6 +53,13 @@ message Friend {
   string username = 2;
 }
 
+message SearchUsersRequest {
+  string query = 1;
+}
+
+message SearchUsersResponse {
+  repeated User users = 1;
+}
 
 message SendFriendRequestRequest {
   int64 target_user_id = 1;
